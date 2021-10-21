@@ -15,14 +15,16 @@ function fetchMovie() {
     })
 }
 
-fetchMovie().then(movie => {
-    console.log("영화정보 출력-비동기 함수", movie)
-}).catch((errorMsg) => {
-    console.log(errorMsg)
-    const errEl=document.createElement('div')
-    errEl.textContent=errorMsg
-    document.body.append(errEl)
-})
+fetchMovie()
+    .then(movie => {
+        console.log("영화정보 출력-비동기 함수", movie)
+    })
+    .catch((errorMsg) => {
+        console.log(errorMsg)
+        const errEl = document.createElement('div')
+        errEl.textContent = errorMsg
+        document.body.append(errEl)
+    })
 
 
 (async function () {
