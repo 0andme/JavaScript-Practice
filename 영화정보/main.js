@@ -3,6 +3,7 @@ const url = "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c123"
 async function fetchMovie() {
     try {
         const res = await fetch(url)
+        console.log("정상")
         return await res.json()
     } catch (error) {
         console.log(error)

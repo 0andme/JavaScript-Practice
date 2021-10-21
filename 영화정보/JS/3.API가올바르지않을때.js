@@ -25,13 +25,25 @@ async function fetchMovie() {
 // 에러가 발생한 자리 다음 try문은 실행되지 않는다 -> catch문으로 넘어간다
 // catch(error){}의 error 매개변수를 통해 에러를 확인해볼 수 있다 
 
-// API key가 잘못된 url일때 
+// API key가 잘못된 url일때 아래와  같은 에러를 만날 수 있다
 
 // {Response: 'False', Error: 'Invalid API key!'}
 // Error: "Invalid API key!"
 // Response: "False"
 // [[Prototype]]: Object
 
-// 위와 같은 에러를 만날 수 있다
+// 3. fetchMovie()를 아래와 같이 변경
+// try-catch 문
+async function fetchMovie() {
+    try {
+        const res = await fetch(url)
+        console.log("정상")
+        return await res.json()
+    } catch (error) {
+        console.log(error)
+    }
+}
 
+// 원래라면 "정상"이라는 메시지가 나오면 안되는데 나옴
+// 이는 단순히 API key가 잘못된 것은 error가 아님을 의미함
 
