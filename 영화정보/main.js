@@ -27,7 +27,15 @@ fetchMovie()
     })
 
 
-(async function () {
-    const movie = await fetchMovie()
-    console.log("영화정보 출력-즉시 실행함수", movie)
+;(async function () {
+    try {
+        const movie = await fetchMovie()
+        console.log("영화정보 출력-즉시 실행함수", movie)
+    } catch (errorMsg){
+        console.log(errorMsg)
+        const errEl = document.createElement('div')
+        errEl.textContent = errorMsg
+        document.body.append(errEl)
+
+    }
 })()

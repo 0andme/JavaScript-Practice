@@ -48,12 +48,11 @@ function fetchMovie() {
             reject(data.Error)
         }
         resolve(data)
-
     })
 }
 // 받은 data에 Error이 있으면 reject를 실행하라는 의미이다.
 
-// 5. 실행문은 아래와 같이 고친다
+// 5-1 . 비동기 함수의 실행문은 아래와 같이 고친다
 fetchMovie().then(movie => {
     console.log("영화정보 출력-비동기 함수", movie)
 }).catch((errorMsg) => {
@@ -76,5 +75,19 @@ fetchMovie().then(movie => {
 // 화면에 에러 메시지인 Invalid API key!가 출력된다.
 
 
+// 5-2 . 즉시 실행 함수의 실행문은 아래와 같이 고친다
+;(async function () {
+    try {
+        const movie = await fetchMovie()
+        console.log("영화정보 출력-즉시 실행함수", movie)
+    } catch (errorMsg){
+        console.log(errorMsg)
+        const errEl = document.createElement('div')
+        errEl.textContent = errorMsg
+        document.body.append(errEl)
 
+    }
+})()
+// 함수를 try catch 문으로 변경하고 비동기함수와 동일한 내용을 catch문에 넣는다
+// 화면에 에러 메시지인 Invalid API key!가 출력된다.
 
