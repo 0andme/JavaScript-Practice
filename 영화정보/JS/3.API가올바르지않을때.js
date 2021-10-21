@@ -1,4 +1,4 @@
-// main.js 의 url선언부분 아래로 바꾸기
+// 1. main.js 의 url선언부분 아래로 바꾸기
 const url= "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c123"
 // 개발자도구에서 콘솔에 뜬 오류 클릭하고(Network 탭에서 )Fetch/XHR 누르고 헤더를 본다.
 // header 의 상태 코드 401
@@ -9,5 +9,29 @@ const url= "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c123"
 // Error: "Invalid API key!"
 // Response: "False"
 // 라는 것을 볼수 있음
+
+// 2. fetchMovie()를 아래와 같이 변경
+// try-catch 문
+async function fetchMovie() {
+    try {
+        const res = await fetch(url)
+        return await res.json()
+    } catch (error) {
+        console.log(error)
+    }
+}
+// 일반적으로 에러가 나면 실행이 멈추지만
+// try-catch 문을 사용하면 try에서 어떤 에러가 나도 다음단계로 넘어갈 수 있음
+// 에러가 발생한 자리 다음 try문은 실행되지 않는다 -> catch문으로 넘어간다
+// catch(error){}의 error 매개변수를 통해 에러를 확인해볼 수 있다 
+
+// API key가 잘못된 url일때 
+
+// {Response: 'False', Error: 'Invalid API key!'}
+// Error: "Invalid API key!"
+// Response: "False"
+// [[Prototype]]: Object
+
+// 위와 같은 에러를 만날 수 있다
 
 
