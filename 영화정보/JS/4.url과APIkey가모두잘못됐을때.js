@@ -32,3 +32,49 @@ resolve(data)
 // resolve(data)처럼 data를 매개변수로 넣어주어야 함
 // new Promise객체에 대한 기본 예제 참고 - 1.Promise객체출력.js
 
+// 4. 잘못된 API key로 변경
+const url = "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c123"
+// 콘솔에 객체가 보임 - 정상적인 응답이 있음을 의미.
+// 컴퓨터는 받은 대로 출력한거고 그것이 에러인지는 우리가 잡아줘야함
+// 아래 코드로 변경
+function fetchMovie() {
+    return new Promise(async (resolve,reject) => {
+        const res = await fetch(url)
+        const data = await res.json()
+        if(data.Error)
+        {
+            //reject(data)
+            // 혹은
+            reject(data.Error)
+        }
+        resolve(data)
+
+    })
+}
+// 받은 data에 Error이 있으면 reject를 실행하라는 의미이다.
+
+// 5. 실행문은 아래와 같이 고친다
+fetchMovie().then(movie => {
+    console.log("영화정보 출력-비동기 함수", movie)
+}).catch((errorMsg) => {
+    console.log(errorMsg)
+})
+// catch()가 에러를 잡아간다.
+// catch()안의 콜백은 reject가 실행되는 자리에서 실행된다
+// = catch()안의 실행되는 함수가 reject니까 콜백의 매개변수가 data.Error이 된다
+
+// 6. 추가-화면에 에러 메시지 보이기
+// 아래와 같이 코드를 고친다
+fetchMovie().then(movie => {
+    console.log("영화정보 출력-비동기 함수", movie)
+}).catch((errorMsg) => {
+    console.log(errorMsg)
+    const errEl=document.createElement('div')
+    errEl.textContent=errorMsg
+    document.body.append(errEl)
+})
+// 화면에 에러 메시지인 Invalid API key!가 출력된다.
+
+
+
+
