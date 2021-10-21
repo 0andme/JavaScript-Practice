@@ -1,6 +1,6 @@
 // 영화 정보를 출력
 // html에
-//<script defer src="./JS/1.promise객체출력.js"></script>가 있어야 동작
+// 1.promise객체출력.js의 fetchMovie()함수 부분이 있어야 함께 동작 
 
 
 // 1. 비동기 함수로 출력
