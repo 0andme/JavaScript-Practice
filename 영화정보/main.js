@@ -1,4 +1,4 @@
-const url = "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c"
+const url = "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c123"
 
 async function fetchMovie() {
     const res = await fetch(url)
