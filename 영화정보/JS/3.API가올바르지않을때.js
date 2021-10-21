@@ -47,3 +47,18 @@ async function fetchMovie() {
 // 원래라면 "정상"이라는 메시지가 나오면 안되는데 나옴
 // 이는 단순히 API key가 잘못된 것은 error가 아님을 의미함
 
+// 4. URl 변경
+// 아예 주소 자체가 달라져야함-아래와 같이 변경
+const url = "https://www.omdbpi.com/?i=tt3896198&apikey=7035c60c"
+// try문에서 오류가 나서 catch문의 error출력 함수가 실행되는 것을 확인
+// 아래와 같은 오류 코드 출력
+// TypeError: Failed to fetch
+//     at fetchMovie (main.js:5)
+//     at main.js:16
+// 위의 출력보다 짧게 출력하기 위해선 
+// console.log(error.message)을 작성한다.
+// 출력 결과
+// Failed to fetch
+
+
+
