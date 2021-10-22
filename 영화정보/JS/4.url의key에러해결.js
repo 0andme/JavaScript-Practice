@@ -52,7 +52,7 @@ function fetchMovie() {
 }
 // 받은 data에 Error이 있으면 reject를 실행하라는 의미이다.
 
-// 5-1 . 비동기 함수의 실행문은 아래와 같이 고친다
+// 5-1 . then-catch 실행문은 아래와 같이 고친다
 fetchMovie().then(movie => {
     console.log("영화정보 출력-비동기 함수", movie)
 }).catch((errorMsg) => {
@@ -62,7 +62,7 @@ fetchMovie().then(movie => {
 // catch()안의 콜백은 reject가 실행되는 자리에서 실행된다
 // = catch()안의 실행되는 함수가 reject니까 콜백의 매개변수가 data.Error이 된다
 
-// 6. 추가-화면에 에러 메시지 보이기
+// 6. 추가 - 화면에 에러 메시지 보이기
 // 아래와 같이 코드를 고친다
 fetchMovie().then(movie => {
     console.log("영화정보 출력-비동기 함수", movie)
@@ -75,7 +75,7 @@ fetchMovie().then(movie => {
 // 화면에 에러 메시지인 Invalid API key!가 출력된다.
 
 
-// 5-2 . 즉시 실행 함수의 실행문은 아래와 같이 고친다
+// 5-2 . async - await 문은 아래와 같이 고친다
 ;(async function () {
     try {
         const movie = await fetchMovie()
