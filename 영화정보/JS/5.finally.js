@@ -34,3 +34,10 @@ fetchMovie()
 // 항상 실행되기 때문에 [로딩이 되든 안되든 무조건 실행해야하는] [로딩을 끄는] 코드를 넣는다 
 // finally는 비동기와 상관없다
 
+// 2. API key가 정상일 때 비정상일 때 모두 finally 안의 코드가 실행되는지 확인
+// 정상
+const url = "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c"
+// 비정상
+const url = "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c123"
+
+// 두 가지 경우 모두 finally가 실행되는 것을 확인

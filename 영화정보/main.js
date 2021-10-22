@@ -1,4 +1,4 @@
-const url = "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c123"
+const url = "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c"
 
 // 일반 함수로 fetchMovie() 선언
 function fetchMovie() {
