@@ -1,1 +1,1 @@
-export {default as loader} from "./loader.js"
+export {default as Loader} from "./loader.js"
