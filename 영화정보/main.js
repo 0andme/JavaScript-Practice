@@ -17,7 +17,16 @@ function fetchMovie() {
 
 fetchMovie()
     .then(movie => {
+        // movie 객체 출력
         console.log("영화정보 출력-비동기 함수", movie)
+        // html 요소 찾기
+        const movieEl = document.querySelector(".movie")
+        const titleEl = movieEl.querySelector(".movie__title")
+        const posterEl = movieEl.querySelector(".movie__poster")
+        const posterImgEl = posterEl.querySelector("img")
+        // 요소에 내용 넣기
+        titleEl.textContent = movie.Title
+        posterImgEl.src = movie.Poster
     })
     .catch((errorMsg) => {
         console.log(errorMsg)
@@ -25,7 +34,7 @@ fetchMovie()
         errEl.textContent = errorMsg
         document.body.append(errEl)
     })
-    .finally(()=>{
+    .finally(() => {
         console.log("finally-then-catch 결과")
 
     })
