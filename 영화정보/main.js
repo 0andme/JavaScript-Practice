@@ -1,3 +1,6 @@
+// Loader class 가져오기
+import { Loader } from "./utils/index.js"
+
 const url = "https://www.omdbapi.com/?i=tt3896198&apikey=7035c60c"
 
 // 일반 함수로 fetchMovie() 선언
@@ -14,6 +17,10 @@ function fetchMovie() {
 
     })
 }
+// loader 인스턴스 생성
+new Loader({
+    el: ".loading"
+})
 
 fetchMovie()
     .then(movie => {
