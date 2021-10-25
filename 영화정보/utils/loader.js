@@ -2,7 +2,10 @@ export default class {
   constructor(options) {
     // 객체 구조 분해 할당
     const {
-      el
+      el = null,
+      size = 100,
+      width = 4,
+      color = "#333"
     } = options
     // html 요소 가져오기
     this.loadingEl = document.querySelector(el)
@@ -11,11 +14,11 @@ export default class {
     const styleEl = document.createElement("style")
     styleEl.innerHTML =
       `.my-loader {
-        width: 100px;
-        height: 100px;
-        border-width: 4px;
+        width: ${size}px;
+        height: ${size}px;
+        border-width: ${width}px;
         border-style: solid;
-        border-color: #333;
+        border-color: ${color};
         border-radius: 50%;
         border-top-color: transparent;
         animation: loading-spin .8s linear infinite;

@@ -46,7 +46,7 @@
   }
     
   //export default class 로 클래스를 만들었는데 이는 index.js에서 
-  // {default as Loader} 라고 작성했기 때문dlek.
+  // {default as Loader} 라고 작성했기 때문이다.
   // 만약 클래스 이름을 지정한 것을 그대로 사용하고자 한다면 아래와 같이 작성한다
   export {Loader} from "./loader.js" // index.js
   export  class Loader{ }          // loader.js
@@ -56,9 +56,32 @@
     // main.js에서 index.js를 import한다
     import { Loader } from "./utils/index.js"
     // 인스턴스를 생성한다. 이때 매개변수로 객체를 넣는다는 것을 잊지말자 
-    // 이때 객체의 키명은 loader.js에서의 객체구조분해할당에서 사용하는 키 명과 동일해야한다
+    // 이때 객체의 키 명은 loader.js에서의 객체구조분해할당에서 사용하는 키 명과 동일해야한다
 
 // 6. 화면 상에 로딩애니메이션이 돌아가면 성공!
+// 7. 여러 옵션을 받을 수 있는 구조로 만들기
+  // loader.js의 객체 구조 분해 할당 부분을 아래와 같이 수정한다
+  const {
+    el,
+    size,
+    width,
+    color
+  } = options
+  // main.js에서, 생성자에 객체를 넣어줄때 위의 키 이름과 동일한 이름으로 접근하면 된다.
+  // 아래와 같이 사용
+  new Loader({
+    el: ".loading",
+    color:"red"
+  })
+  // main.js에서 객체를 넣을 때 모든 옵션이 안 들어올 경우도 있을 수 있다.
+  // 따라서 loader.js에서 각 옵션의 기본 값을 지정해주면 좋다.(아래코드)
+  const {
+    el = null,
+    size = 100,
+    width = 4,
+    color = "#333"
+  } = options
+  // = 으로 기본값을 넣어준다는 것을 잊지말 것
 
 
 
