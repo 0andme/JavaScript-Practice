@@ -19,7 +19,8 @@ function fetchMovie() {
 }
 // loader 인스턴스 생성
 new Loader({
-    el: ".loading"
+    el: ".loading",
+    color:"red"
 })
 
 fetchMovie()
