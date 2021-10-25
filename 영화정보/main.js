@@ -18,10 +18,11 @@ function fetchMovie() {
     })
 }
 // loader 인스턴스 생성
-new Loader({
+const loader = new Loader({
     el: ".loading",
     color:"red"
 })
+loader.start()
 
 fetchMovie()
     .then(movie => {
@@ -35,6 +36,7 @@ fetchMovie()
         // 요소에 내용 넣기
         titleEl.textContent = movie.Title
         posterImgEl.src = movie.Poster
+
     })
     .catch((errorMsg) => {
         console.log(errorMsg)
@@ -43,7 +45,8 @@ fetchMovie()
         document.body.append(errEl)
     })
     .finally(() => {
-        console.log("finally-then-catch 결과")
+      loader.stop()
+      console.log("finally-then-catch 결과")
 
     })
 
