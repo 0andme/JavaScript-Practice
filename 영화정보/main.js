@@ -22,6 +22,7 @@ const loader = new Loader({
     el: ".loading",
     color:"red"
 })
+// loader의 start메소드 실행 (화면에 로딩요소 출력)
 loader.start()
 
 fetchMovie()
@@ -45,6 +46,7 @@ fetchMovie()
         document.body.append(errEl)
     })
     .finally(() => {
+      // 화면에 loader요소 사라짐
       loader.stop()
       console.log("finally-then-catch 결과")
 
