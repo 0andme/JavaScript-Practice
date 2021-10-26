@@ -51,7 +51,7 @@
     })
     posterLoader.start()
 
-// 6. loadImg.js 생성
+// 6. loadImage.js 생성
   export default function (url) {
     return new Promise((resolve, reject) => {
       const img = document.createElement('img')
@@ -65,3 +65,52 @@
     export { default as loadImage } from "./loadImage.js"
   // main.js에서 import
     import { Loader, loadImage } from "./utils/index.js"
+  // main.js에서 loadImage()함수 실행
+    .then(()=>{
+      // 기존 코드 유지
+      // 아래 코드 추가
+      loadImage(movie.Poster).then(() => {
+        posterLoader.stop()
+      }
+      )
+    }).finally(()=>{
+      // 기존 코드 유지
+      // 아래 코드 추가
+      posterLoader.stop()
+    })
+// 7. main.js async await 패턴 함수 이용
+
+    // main.js의 주석 처리한 async await 패턴 함수 살림
+    // fetch then 패턴 함수는 주석처리
+    // 
+    ;(async function () {
+      try {
+        const movie = await fetchMovie()
+        console.log("영화정보 출력-즉시 실행함수", movie)
+        // movie 객체 출력
+        console.log("영화정보 출력-비동기 함수", movie)
+        // html 요소 찾기
+        const movieEl = document.querySelector(".movie")
+        const titleEl = movieEl.querySelector(".movie__title")
+        const posterEl = movieEl.querySelector(".movie__poster")
+        const posterImgEl = posterEl.querySelector("img")
+        // 요소에 내용 넣기
+        titleEl.textContent = movie.Title
+        posterImgEl.src = movie.Poster
+        // 이미지 로드 및 로딩요소 멈춤 
+        await loadImage(movie.Poster)
+        posterLoader.stop()
+      }
+      catch (errorMsg) {
+        console.log(errorMsg)
+        const errEl = document.createElement('div')
+        errEl.textContent = errorMsg
+        document.body.append(errEl)
+      }
+      finally {
+        loader.stop()
+        posterLoader.stop()
+        console.log("finally-async-await 결과")
+      }
+    })()
+    //  이미지를 로드하고 포스터 로딩요소를 멈추는 부분의 코드가 fetch then함수와 달라졌다.
