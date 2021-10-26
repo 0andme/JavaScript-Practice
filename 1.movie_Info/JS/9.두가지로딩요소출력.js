@@ -113,4 +113,5 @@
         console.log("finally-async-await 결과")
       }
     })()
+    
     //  이미지를 로드하고 포스터 로딩요소를 멈추는 부분의 코드가 fetch then함수와 달라졌다.
